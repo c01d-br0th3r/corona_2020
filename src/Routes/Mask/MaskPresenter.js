@@ -29,7 +29,7 @@ const Semibox = styled.div`
 `;
 
 const Box = styled.div`
-  width: 30%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   border: 1px solid #f2f2f2;
