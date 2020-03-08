@@ -36,7 +36,7 @@ const Box = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 5px;
-  box-shadow: 7px 7px 19px 0px rgba(255, 255, 255, 0.56);
+  box-shadow: 5px 5px 15px 0px rgba(255, 255, 255, 0.56);
 `;
 
 const Box_title = styled.div`

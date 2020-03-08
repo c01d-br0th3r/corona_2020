@@ -1,5 +1,6 @@
 import React from "react";
 import CoronaTemplate from "../Components/CoronaTemplate";
+import axios from "axios";
 import api from "../api";
 import Title from "./Title";
 import Info from "./Info";
@@ -14,7 +15,8 @@ class MainPage extends React.Component {
     increase: 0,
     cure_rate: 0,
     location: [],
-    news: []
+    news: [],
+    mask: []
   };
 
   componentDidMount = async () => {
