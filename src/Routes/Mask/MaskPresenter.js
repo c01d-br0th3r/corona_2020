@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Title = styled.div`
   width: 100%;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 700;
   border-bottom: 7px solid #fa8231;
   padding: 40px;
@@ -78,6 +78,7 @@ const Stock = styled.div`
   border: 1px solid #c2c2c2;
   border-radius: 5px;
   padding: 10px;
+  text-align: center;
 `;
 
 const Remain = styled.div`
@@ -86,6 +87,7 @@ const Remain = styled.div`
   border: 1px solid #c2c2c2;
   border-radius: 5px;
   padding: 10px;
+  text-align: center;
 `;
 
 const Soldout = styled.div``;
