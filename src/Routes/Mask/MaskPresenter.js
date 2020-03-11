@@ -65,6 +65,14 @@ const Nameaddr = styled.div`
   margin-right: 10px;
 `;
 
+const Subtitle = styled.div`
+  width: 100%;
+  font-size: 35px;
+  font-weight: 600;
+  padding: 20px;
+  margin-bottom: 30px;
+`;
+
 const Count = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,28 +100,111 @@ const Soldout = styled.div``;
 
 const MaskPresenter = ({ stores }) => {
   console.log(stores);
+  const plentyStores = stores.filter(store => store.remain_stat === "plenty");
+  const someStores = stores.filter(store => store.remain_stat === "some");
+  const fewStores = stores.filter(store => store.remain_stat === "few");
+  const emptyStores = stores.filter(store => store.remain_stat === "empty");
+
+  console.log(plentyStores, someStores, fewStores, emptyStores);
   return (
     <Container>
       <Title>내 주변 약국</Title>
       <Semibox>
-        {stores.map(store => (
-          <Box key={store.code}>
-            <Nameaddr>
-              <Name>{store.name}</Name>
-              <Addr>{store.addr}</Addr>
-            </Nameaddr>
-            <Count>
-              <Stock>업데이트 : {store.created_at}</Stock>
-              <Remain>
-                {store.remain_stat === "plenty" && "100개 이상"}
-                {store.remain_stat === "some" && "30개 이상"}
-                {store.remain_stat === "few" && "10개 이상"}
-                {store.remain_stat === "empty" && "재고 없음"}
-                {store.remain_stat === null && "정보 없음"}
-              </Remain>
-            </Count>
-          </Box>
-        ))}
+        <Subtitle>100개 이상</Subtitle>
+        {plentyStores.length === 0 ? (
+          <Name>결과 없음</Name>
+        ) : (
+          plentyStores.map(store => (
+            <Box key={store.code}>
+              <Nameaddr>
+                <Name>{store.name}</Name>
+                <Addr>{store.addr}</Addr>
+              </Nameaddr>
+              <Count>
+                <Stock>업데이트 : {store.created_at}</Stock>
+                <Remain>
+                  {store.remain_stat === "plenty" && "100개 이상"}
+                  {store.remain_stat === "some" && "30개 이상"}
+                  {store.remain_stat === "few" && "10개 이상"}
+                  {store.remain_stat === "empty" && "재고 없음"}
+                  {store.remain_stat === null && "정보 없음"}
+                </Remain>
+              </Count>
+            </Box>
+          ))
+        )}
+
+        <Subtitle>30개 이상 100개 미만</Subtitle>
+        {someStores.length === 0 ? (
+          <Name>결과 없음</Name>
+        ) : (
+          someStores.map(store => (
+            <Box key={store.code}>
+              <Nameaddr>
+                <Name>{store.name}</Name>
+                <Addr>{store.addr}</Addr>
+              </Nameaddr>
+              <Count>
+                <Stock>업데이트 : {store.created_at}</Stock>
+                <Remain>
+                  {store.remain_stat === "plenty" && "100개 이상"}
+                  {store.remain_stat === "some" && "30개 이상"}
+                  {store.remain_stat === "few" && "10개 이상"}
+                  {store.remain_stat === "empty" && "재고 없음"}
+                  {store.remain_stat === null && "정보 없음"}
+                </Remain>
+              </Count>
+            </Box>
+          ))
+        )}
+
+        <Subtitle>10개 이상 30개 미만</Subtitle>
+        {fewStores.length === 0 ? (
+          <Name>결과 없음</Name>
+        ) : (
+          fewStores.map(store => (
+            <Box key={store.code}>
+              <Nameaddr>
+                <Name>{store.name}</Name>
+                <Addr>{store.addr}</Addr>
+              </Nameaddr>
+              <Count>
+                <Stock>업데이트 : {store.created_at}</Stock>
+                <Remain>
+                  {store.remain_stat === "plenty" && "100개 이상"}
+                  {store.remain_stat === "some" && "30개 이상"}
+                  {store.remain_stat === "few" && "10개 이상"}
+                  {store.remain_stat === "empty" && "재고 없음"}
+                  {store.remain_stat === null && "정보 없음"}
+                </Remain>
+              </Count>
+            </Box>
+          ))
+        )}
+
+        <Subtitle>재고 없음</Subtitle>
+        {emptyStores.length === 0 ? (
+          <Name>결과 없음</Name>
+        ) : (
+          emptyStores.map(store => (
+            <Box key={store.code}>
+              <Nameaddr>
+                <Name>{store.name}</Name>
+                <Addr>{store.addr}</Addr>
+              </Nameaddr>
+              <Count>
+                <Stock>업데이트 : {store.created_at}</Stock>
+                <Remain>
+                  {store.remain_stat === "plenty" && "100개 이상"}
+                  {store.remain_stat === "some" && "30개 이상"}
+                  {store.remain_stat === "few" && "10개 이상"}
+                  {store.remain_stat === "empty" && "재고 없음"}
+                  {store.remain_stat === null && "정보 없음"}
+                </Remain>
+              </Count>
+            </Box>
+          ))
+        )}
       </Semibox>
     </Container>
   );
