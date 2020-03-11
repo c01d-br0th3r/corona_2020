@@ -72,11 +72,9 @@ const Count = styled.div`
   text-align: right;
 `;
 const Stock = styled.div`
-  font-size: 24px;
+  font-size: 12px;
   font-weight: 500;
   margin-bottom: 10px;
-  border: 1px solid #c2c2c2;
-  border-radius: 5px;
   padding: 10px;
   text-align: center;
 `;
@@ -93,6 +91,7 @@ const Remain = styled.div`
 const Soldout = styled.div``;
 
 const MaskPresenter = ({ stores }) => {
+  console.log(stores);
   return (
     <Container>
       <Title>내 주변 약국</Title>
@@ -100,12 +99,18 @@ const MaskPresenter = ({ stores }) => {
         {stores.map(store => (
           <Box key={store.code}>
             <Nameaddr>
-              <Name>{store.name.slice(6)}</Name>
+              <Name>{store.name}</Name>
               <Addr>{store.addr}</Addr>
             </Nameaddr>
             <Count>
-              <Stock>입고 : {store.stock_cnt}</Stock>
-              <Remain>재고 : {store.remain_cnt}</Remain>
+              <Stock>업데이트 : {store.created_at}</Stock>
+              <Remain>
+                {store.remain_stat === "plenty" && "100개 이상"}
+                {store.remain_stat === "some" && "30개 이상"}
+                {store.remain_stat === "few" && "10개 이상"}
+                {store.remain_stat === "empty" && "재고 없음"}
+                {store.remain_stat === null && "정보 없음"}
+              </Remain>
             </Count>
           </Box>
         ))}
